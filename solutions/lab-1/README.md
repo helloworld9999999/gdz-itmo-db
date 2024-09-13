@@ -73,7 +73,7 @@
 ```
         SELECT p.name
         FROM production.product AS p
-        WHERE p.name ~ '^(D|M)..+';
+        WHERE product.name ~ '^(D|M).{3,}';
 ```
 
 
