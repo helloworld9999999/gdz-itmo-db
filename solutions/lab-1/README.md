@@ -109,9 +109,41 @@
     ```
 
 15. Получить все названия товаров в системе, в названии которых третий символ – либо буква “s”, либо буква “r”. Решить задачу как минимум двумя способами.
-
+```
+        SELECT p.name
+        FROM production.product AS p
+        WHERE p.name LIKE 's%' OR p.name LIKE '__r%';
+```
+С использованием регулярных выражений:
+```
+        SELECT p.name
+        FROM production.product AS p
+        WHERE p.name ~ '^..[sr]'
+```
 16.  Получить все названия товаров в системе, в названии которых ровно 5 символов. 
-
+```
+        SELECT p.name
+        FROM production.product AS p
+        WHERE LENGTH(p.name) = 5 
+```
 17.  Написать запрос, который возвращает названия товаров, которые были в продаже между мартом 2011 года и мартом 2012 года включительно (необходимо учитывать формат даты)
+```
+        SELECT p.name
+        FROM production.product AS p
+        WHERE p.sellstartdate > '2011-03-01'
+        AND p.sellenddate < '2012-03-30'
+```
 
 18. Найти максимальную стоимость товара (отпускная цена ListPrice) из тех, которые были произведены, начиная с марта 2011 года. 
+```
+        SELECT p.listprice
+        FROM production.product AS p
+        WHERE p.modifieddate > '2011-03-01' ORDER BY p.listprice DESC
+        LIMIT 1
+```
+С использованием `MAX`:
+```
+        SELECT MAX(p.listprice)
+        FROM production.product AS p
+        WHERE p.modifieddate > '2011-03-01';
+```
