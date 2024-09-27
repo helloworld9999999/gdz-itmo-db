@@ -52,7 +52,7 @@
     ```
 8. Найти и вывести на экран все цвета таких продуктов, у которых в имени первая буква ‘L’ и третья ‘N’.
     ```
-        LECT p.color
+        SELECT p.color
         FROM production.product AS p
         WHERE p.name LIKE 'L_N%';
     ```
@@ -73,7 +73,7 @@
 ```
         SELECT p.name
         FROM production.product AS p
-        WHERE p.name ~ '^(D|M)..+';
+        WHERE product.name ~ '^(D|M).{3,}';
 ```
 
 
